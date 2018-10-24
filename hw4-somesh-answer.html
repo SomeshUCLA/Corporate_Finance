@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)http://www.ivo-welch.info/teaching/hwtemplate.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" class="gr__ivo-welch_info"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>hwtemplate.html</title>
+  <meta name="KEYWORDS" content="..."><meta name="AUTHOR" content="You"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="./somesh_hw1_files/hw.css"></head>
+
+<style type="text/css">
+/* we start with iaw.css */
+
+
+h1 { font-size:17pt; text-align:center; color:black; }
+h2 { font-size:14pt; text-align:left; color:black; }
+h3 { font-size:11pt; text-align:left; color:black; }
+
+a { text-decoration:none; color:#3284bf; }
+a:hover { text-decoration:underline; }
+/* { background-color:#3284bf; color:white; } */
+
+hr.fat { background-color:black; height:4px; }
+
+hr { background-color:black; height:1px; }
+
+li { margin-top: 1em; }
+
+p.notice { background-color:white; font-size:10pt; border:solid black 5px; }
+
+caption { color:brown; text-decoration:underline; font-size:9pt; }
+td { padding-left:1em; padding-right:1em; }
+th { text-decoration:underline }
+table { margin-left:2em; }
+
+p.boxright { width:355px; margin-right:0px; background-color:white; font-size:10pt; float:right; padding:20px; font-size:large; vertical-align:top; }
+
+dt.big { line-height:3; font-size:large; font-weight:bolder; font-family:sans-serif;margin-top:12pt }
+dt.hili { font-size:large; font-family:Cursive; display:inline; text-decoration:underline; padding-top:1em; }
+dt.smallbold { font-size:small; font-family:Cursive; display:inline; font-weight:bold; }
+dd { margin-bottom:1ex }
+
+td.hili { font-size:x-large; font-family:cursive; margin:20px; vertical-align:top }
+
+div.smallnobox { width:400pt; font-size:smaller; margin:10px; }
+div.smallbox { width:400pt; font-size:smaller; margin:10px; border:solid black 1px; }
+
+.boxquote {float: left; text-align: center; border: solid black 1px;font-family: Times, sans-serif; font-size: 12pt; margin: 10px;}
+
+td.googler { vertical-align:bottom; color:green; font-size:x-large}
+
+.small { font-size:smaller; }
+.right { text-align:right; }
+
+body { font-family: 'Oxygen', Verdana, serif; margin:2em; background-color: #F0F0F0; }
+
+div.explain { font-size:smaller; margin-left:40px; margin-right:40px; margin-bottom:10px; }
+
+
+summary::-webkit-details-marker {
+    color: #00ACF3;
+    font-size: 125%;
+    margin-right: 2px;
+}
+
+summary:focus {	outline-style: none; }
+article { margin-left:1em; }
+article > details > summary { font-size: 28px; margin-top: 32px; }
+article > details > summary.link { font-size: 28px; margin-top: 32px; text-decoration:underine; }
+details > p { margin-left: 36px; background-color:#f0f0f0; }
+details > div { margin-left: 36px; background-color:#f0f0f0; }
+
+details details { margin-left: 48px; }
+details details summary { font-size: 16px; }
+
+</style>  
+  
+
+  
+
+  
+  
+
+  
+  
+
+  <body data-gr-c-s-loaded="true">
+
+    <h1> Homework 4, by Somesh Srivastava, Feb 08, 2018 </h1>
+
+    <h2> Executive Summary </h2>
+
+    <p> As part of this study, annual financial data of companies from 1950 to 2017 has been taken and a summary of their earnings, cash flows, and leverage ratios (FD/TA, market and book-based)has been calculated</p>
+
+    <h2> Details
+	
+
+
+    </h2>
+
+    <p>Annual financial data of companies are taken from CRSP/Compustat Merged table. Date range is from Jan, 1, 1950 to Dec, 31, 2017. Data selection is based on the condition that financials of a company in a particular year should be available by Dec of the same year.
+</br></br>
+EBIT and EBITDA from P&L's are showing earnings numbers. Cash and cash equivalent from cash flow statement is showing cash flows. For leverage ratio, total financial debt has been calculated adding short term and long term borrowings. This sum has been divided by the total asset.
+</br></br>
+
+A summary statistics showing mean, minimum, maximum and different quantiles figure has been shown in the table below.
+A correlation matrix has been calculated to see any strong relation between these factors - earnings, cash flows and leverage. Bases on the numbers there is no strong correlation.
+
+.</p>
+
+    <h2> Tables and Figures </h2>
+
+    <p> Tables Used from CRSP:</p>
+
+
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+.tg .tg-9hbo{font-weight:bold;vertical-align:top}
+.tg .tg-b7b8{background-color:#f9f9f9;vertical-align:top}
+.tg .tg-yw4l{vertical-align:top}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-9hbo">Data</th>
+    <th class="tg-9hbo">File</th>
+    <th class="tg-9hbo">Variable</th>
+    <th class="tg-9hbo">Type</th>
+    <th class="tg-9hbo">Description</th>
+  </tr>
+  <tr>
+    <td class="tg-b7b8">CRSP/Compustat Merged - Fundamentals Annual</td>
+    <td class="tg-b7b8">ccmfunda</td>
+    <td class="tg-b7b8">GVKEY</td>
+    <td class="tg-b7b8">CHAR</td>
+    <td class="tg-b7b8">Standard and Poor's Identifier</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l">FYEAR</td>
+    <td class="tg-yw4l">NUM</td>
+    <td class="tg-yw4l">FYEAR -- Data Year - Fiscal</td>
+  </tr>
+  <tr>
+    <td class="tg-b7b8"></td>
+    <td class="tg-b7b8"></td>
+    <td class="tg-b7b8">FDATE</td>
+    <td class="tg-b7b8">DATE</td>
+    <td class="tg-b7b8">FDATE -- Final Date</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l">CHECH</td>
+    <td class="tg-yw4l">NUM</td>
+    <td class="tg-yw4l">CHECH -- Cash and Cash Equivalents Increase/(Decrease)</td>
+  </tr>
+  <tr>
+    <td class="tg-b7b8"></td>
+    <td class="tg-b7b8"></td>
+    <td class="tg-b7b8">EBIT</td>
+    <td class="tg-b7b8">NUM</td>
+    <td class="tg-b7b8">EBIT -- Earnings Before Interest and Taxes</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l">EBITDA</td>
+    <td class="tg-yw4l">NUM</td>
+    <td class="tg-yw4l">EBITDA -- Earnings Before Interest</td>
+  </tr>
+  <tr>
+    <td class="tg-b7b8"></td>
+    <td class="tg-b7b8"></td>
+    <td class="tg-b7b8">AT</td>
+    <td class="tg-b7b8">NUM</td>
+    <td class="tg-b7b8">AT -- Assets - Total</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l">BAST</td>
+    <td class="tg-yw4l">NUM</td>
+    <td class="tg-yw4l">BAST -- Average Short-Term Borrowings</td>
+  </tr>
+  <tr>
+    <td class="tg-b7b8"></td>
+    <td class="tg-b7b8"></td>
+    <td class="tg-b7b8">DLTT</td>
+    <td class="tg-b7b8">NUM</td>
+    <td class="tg-b7b8">DLTT -- Long-Term Debt - Total</td>
+  </tr>
+</table>
+
+    <p> Results:</p>
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg .tg-erlg{font-weight:bold;background-color:#efefef;vertical-align:top}
+.tg .tg-yzt1{background-color:#efefef;vertical-align:top}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-erlg">Statistics</th>
+    <th class="tg-erlg">EBIT</th>
+    <th class="tg-erlg">EBITDA</th>
+    <th class="tg-erlg">Cash &amp; cash equivalent</th>
+    <th class="tg-erlg">Leverage</th>
+  </tr>
+  <tr>
+    <td class="tg-yzt1">Min.</td>
+    <td class="tg-yzt1">-3348.00</td>
+    <td class="tg-yzt1">-2897</td>
+    <td class="tg-yzt1">-14127</td>
+    <td class="tg-yzt1">0</td>
+  </tr>
+  <tr>
+    <td class="tg-yzt1">1st Qu.</td>
+    <td class="tg-yzt1">-0.36</td>
+    <td class="tg-yzt1">0.33</td>
+    <td class="tg-yzt1">-1.816</td>
+    <td class="tg-yzt1">0</td>
+  </tr>
+  <tr>
+    <td class="tg-yzt1">Median</td>
+    <td class="tg-yzt1">4.38</td>
+    <td class="tg-yzt1">7.26</td>
+    <td class="tg-yzt1">0.069</td>
+    <td class="tg-yzt1">0.1249</td>
+  </tr>
+  <tr>
+    <td class="tg-yzt1">Mean</td>
+    <td class="tg-yzt1">129.27</td>
+    <td class="tg-yzt1">180.35</td>
+    <td class="tg-yzt1">7.436</td>
+    <td class="tg-yzt1">0.1867</td>
+  </tr>
+  <tr>
+    <td class="tg-yzt1">3rd Qu.</td>
+    <td class="tg-yzt1">29.89</td>
+    <td class="tg-yzt1">43.81</td>
+    <td class="tg-yzt1">3.935</td>
+    <td class="tg-yzt1">0.3006</td>
+  </tr>
+  <tr>
+    <td class="tg-yzt1">Max.</td>
+    <td class="tg-yzt1">55241.00</td>
+    <td class="tg-yzt1">58446</td>
+    <td class="tg-yzt1">13871</td>
+    <td class="tg-yzt1">20.8922</td>
+  </tr>
+</table>
+</br></br>
+
+<p> Correlation Matrix:</p>
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+.tg .tg-erlg{font-weight:bold;background-color:#efefef;vertical-align:top}
+.tg .tg-e3ma{background-color:#efefef;vertical-align:top}
+.tg .tg-yzt1{background-color:#efefef;vertical-align:top}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-erlg">Correlation Matrix</th>
+    <th class="tg-erlg">EBIT</th>
+    <th class="tg-erlg">EBITDA</th>
+    <th class="tg-erlg">Cash Flows</th>
+    <th class="tg-erlg">Leverage</th>
+  </tr>
+  <tr>
+    <td class="tg-yzt1">EBIT</td>
+    <td class="tg-e3ma">1.00</td>
+    <td class="tg-yzt1">0.98</td>
+    <td class="tg-e3ma">0.20</td>
+    <td class="tg-yzt1">0.06</td>
+  </tr>
+  <tr>
+    <td class="tg-yzt1">EBITDA</td>
+    <td class="tg-e3ma">0.98</td>
+    <td class="tg-yzt1">1.00</td>
+    <td class="tg-e3ma">0.19</td>
+    <td class="tg-yzt1">0.06</td>
+  </tr>
+  <tr>
+    <td class="tg-yzt1">Cash &amp; cash Equivalent</td>
+    <td class="tg-e3ma">0.20</td>
+    <td class="tg-yzt1">0.19</td>
+    <td class="tg-e3ma">1.00</td>
+    <td class="tg-yzt1">0.01</td>
+  </tr>
+  <tr>
+    <td class="tg-yzt1">Leverage</td>
+    <td class="tg-e3ma">0.06</td>
+    <td class="tg-yzt1">0.06</td>
+    <td class="tg-e3ma">0.01</td>
+    <td class="tg-yzt1">1.00</td>
+  </tr>
+</table>
+</br></br>
+
+<p> Sample data:</p>
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+.tg .tg-erlg{font-weight:bold;background-color:#efefef;vertical-align:top}
+.tg .tg-e3ma{background-color:#efefef;vertical-align:top}
+.tg .tg-yzt1{background-color:#efefef;vertical-align:top}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-erlg">GVKEY</th>
+    <th class="tg-erlg">Financial Year</th>
+    <th class="tg-erlg">EBIT</th>
+    <th class="tg-erlg">EBITDA</th>
+    <th class="tg-erlg">Cash Flows</th>
+    <th class="tg-erlg">Leverage</th>
+  </tr>
+  <tr>
+    <td class="tg-e3ma">1001</td>
+    <td class="tg-e3ma">1984</td>
+    <td class="tg-e3ma">1.892</td>
+    <td class="tg-e3ma">3.208</td>
+    <td class="tg-e3ma">-2.761</td>
+    <td class="tg-e3ma">0.26</td>
+  </tr>
+  <tr>
+    <td class="tg-yzt1">1001</td>
+    <td class="tg-yzt1">1985</td>
+    <td class="tg-yzt1">5.238</td>
+    <td class="tg-yzt1">7.247</td>
+    <td class="tg-yzt1">0.895</td>
+    <td class="tg-yzt1">0.41</td>
+  </tr>
+  <tr>
+    <td class="tg-e3ma">1003</td>
+    <td class="tg-e3ma">1983</td>
+    <td class="tg-e3ma">2.089</td>
+    <td class="tg-e3ma">2.138</td>
+    <td class="tg-e3ma">1.71</td>
+    <td class="tg-e3ma">0.18</td>
+  </tr>
+  <tr>
+    <td class="tg-yzt1">1003</td>
+    <td class="tg-yzt1">1984</td>
+    <td class="tg-yzt1">0.732</td>
+    <td class="tg-yzt1">0.825</td>
+    <td class="tg-yzt1">-1.179</td>
+    <td class="tg-yzt1">0.13</td>
+  </tr>
+  <tr>
+    <td class="tg-e3ma">1009</td>
+    <td class="tg-e3ma">1982</td>
+    <td class="tg-e3ma">-2.344</td>
+    <td class="tg-e3ma">-0.635</td>
+    <td class="tg-e3ma">-0.015</td>
+    <td class="tg-e3ma">0.65</td>
+  </tr>
+  <tr>
+    <td class="tg-yzt1">1009</td>
+    <td class="tg-yzt1">1983</td>
+    <td class="tg-yzt1">2.645</td>
+    <td class="tg-yzt1">4.249</td>
+    <td class="tg-yzt1">-0.033</td>
+    <td class="tg-yzt1">2.30</td>
+  </tr>
+  <tr>
+    <td class="tg-e3ma">1009</td>
+    <td class="tg-e3ma">1984</td>
+    <td class="tg-e3ma">2.991</td>
+    <td class="tg-e3ma">3.473</td>
+    <td class="tg-e3ma">0.125</td>
+    <td class="tg-e3ma">0.77</td>
+  </tr>
+  <tr>
+    <td class="tg-yzt1">1009</td>
+    <td class="tg-yzt1">1985</td>
+    <td class="tg-yzt1">3.817</td>
+    <td class="tg-yzt1">4.408</td>
+    <td class="tg-yzt1">-0.281</td>
+    <td class="tg-yzt1">0.50</td>
+  </tr>
+  <tr>
+    <td class="tg-e3ma">1009</td>
+    <td class="tg-e3ma">1986</td>
+    <td class="tg-e3ma">3.719</td>
+    <td class="tg-e3ma">4.388</td>
+    <td class="tg-e3ma">0.172</td>
+    <td class="tg-e3ma">0.56</td>
+  </tr>
+  <tr>
+    <td class="tg-yzt1">1009</td>
+    <td class="tg-yzt1">1987</td>
+    <td class="tg-yzt1">2.028</td>
+    <td class="tg-yzt1">2.821</td>
+    <td class="tg-yzt1">-0.249</td>
+    <td class="tg-yzt1">0.54</td>
+  </tr>
+</table>
+
+
+
+    <h2> Computer Code </h2>
+
+    <pre>      
+## Loading required libraries
+
+if (!require("data.table")) install.packages("data.table")
+if (!require("xts")) install.packages("xts")
+if (!require("ggplot2")) install.packages("ggplot2")
+if (!require("plyr")) install.packages("plyr")
+
+
+setwd("D:/OneDrive for Business/MFE/Curriculum/Winter 2018/404-Corporate Finance and Risk Management - WELCH/Homework/HW4")
+
+findata <- fread("./financialData.CSV", header = TRUE)
+findata$datadate<- as.Date(as.character(findata$datadate), "%Y%m%d")
+
+#subsetting data if the finacials of a particular year (fyear) was available before Dec of same year.
+findata <- findata[year(findata$datadate)==findata$fyear]
+findata <- findata[, c("GVKEY", "datadate", "fyear", "at", "bast", "chech", "dltt", "ebit", "ebitda")]
+findata <- findata[complete.cases(findata)]
+findata$leverage <- ifelse(findata$at>0, (findata$bast+findata$dltt)/findata$at, 0)
+findata <- findata[, c("GVKEY", "fyear", "ebit", "ebitda", "chech", "leverage")]
+
+
+nrow(findata)
+n <- length(unique(findata$GVKEY))
+cat("Number of companies: ", n)
+summary(findata[, c(3, 4, 5, 6)])
+cor(findata[, c(3, 4, 5, 6)])
+    </pre>
+
+    <h2> References </h2>
+
+    <ul>
+      <li> <a href="https://wrds-www.wharton.upenn.edu/pages/?_ga=2.62227180.1102203778.1516337417-492172633.1515699770">
+Wharton Research Data Services (WRDS)</a> CRSP data taken on Feb 08, 2018. </li>
+
+    </ul>
+
+    
+
+  
+
+
+</body></html>
